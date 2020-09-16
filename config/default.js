@@ -5,8 +5,8 @@ const config = {
   database: {
     DATABASE: 'koa2_blog',
     USERNAME: 'root',
-    PASSWORD: '123456',
-    PORT: '3308',
+    PASSWORD: '198955',
+    PORT: '3306',
     HOST: 'localhost'
   }
 }

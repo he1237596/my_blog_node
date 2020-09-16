@@ -33,11 +33,28 @@ class Article {
     async articleEdit(ctx, next) {
         const {title, content,id} = ctx.request.body;
         await userModel.editArticle([ title,content, moment().format('YYYY-MM-DD HH:mm:ss'),id]).then(res => {
-
             ctx.body = {
                 code: 200,
                 data: res,
                 msg: '编辑成功',
+            }
+        });
+    }
+
+    async articleDetail(ctx, next) {
+        const { id } = ctx.query;
+        await userModel.queryArticleDetail( id ).then( (res=[]) => {
+            if (res.length) {
+                ctx.body = {
+                    code: 200,
+                    msg: '查询成功',
+                    data: res[0]
+                }
+            } else {
+                ctx.body = {
+                    code: 500,
+                    msg: '用户不存在'
+                }
             }
         });
     }

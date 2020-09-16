@@ -32,6 +32,7 @@ let cookie = {
 }
 const allowpage = [ '/login','/register','/signup'];
 
+
 // app.use(cors());
 app.use(async (ctx, next) => {
     // ctx.cookies.set(
@@ -45,14 +46,14 @@ app.use(async (ctx, next) => {
     //     //     }
     //     // );
     //     // ctx.set('Access-Control-Allow-Origin', '*');
-    ctx.set('Access-Control-Allow-Origin', 'http://localhost:8082');
+    ctx.set('Access-Control-Allow-Origin', 'http://localhost:8080');
     ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , sessionId,token');
     ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     ctx.set("Access-Control-Allow-Credentials", true); //可以带cookies
     if (ctx.method == 'OPTIONS') {
         ctx.body = '';
     } else {
-        console.log(ctx);
+        // console.log(ctx);
         await next();
     }
 });
